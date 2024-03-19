@@ -71,4 +71,12 @@ class Manager:
             SELECT * FROM managers WHERE id = ?
         """
         row = CURSOR.execute(sql,(id, )).fetchone()
-        return cls.instance_from_db(row) if row else None    
+        return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def find_by_email(cls,email):
+        sql = """
+            SELECT * FROM managers WHERE email = ?
+        """
+        row = CURSOR.execute(sql,(email, )).fetchone()
+        return cls.instance_from_db(row) if row else None            
