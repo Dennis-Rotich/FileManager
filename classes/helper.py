@@ -20,28 +20,38 @@ def delete(file):
         print('File does not exist')
 
 def overwrite(file,content):
-    with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',"w",encoding="utf-8") as f:
-        f.write(content)
-    print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())
-    print('Complete')
+    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
+        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',"w",encoding="utf-8") as f:
+            f.write(content)
+        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())
+        print('Complete')
+    else:
+        print('File does not exist')
 
 def write(file,content):
-    with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','a',encoding='utf-8') as f:
-        f.write(content)
-    print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())    
-    print('Complete')
+    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
+        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','a',encoding='utf-8') as f:
+            f.write(content)
+        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())    
+    else:
+        print('File does not exist')
     pass
 
 def read(file):
-    with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',encoding='utf-8') as f:
-        for line in f:
-            print(line)
-    print('Complete')
+    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
+        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',encoding='utf-8') as f:
+            for line in f:
+                print(line)
+    else:
+        print('File does not exist')
 
 def create(file):
-    with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','x',encoding='utf-8') as f:
-        pass
-    print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())
+    if os.path.exists():
+        print('File already exists')
+    else:
+        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','x',encoding='utf-8') as f:
+                pass
+        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())        
 
 def assign():
     options = """
