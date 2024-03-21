@@ -3,14 +3,24 @@ from classes.managers import Manager
 from classes.employees import Employee
 
 def employee(name,email,manager_id):
-    employee = Employee(name,email,int(manager_id))
-    employee.save()
-    print(f"{name} has been added")
+    if "@gmail.com" in email:
+        if isinstance(manager_id,int):
+            employee = Employee(name,email,int(manager_id))
+            employee.save()
+            print(f"{name} has been added")
+        else:
+            print("Manager ID must be integer")
+    else:
+        print("Email entered is not valid")
+
 
 def manager(name,email):
-    manager = Manager(name,email)
-    manager.save()
-    print(f"{name} has been added")
+    if "@gmail.com" in email:
+        manager = Manager(name,email)
+        manager.save()
+        print(f"{name} has been added")
+    else:
+        print('Email entered is not valid')    
 
 def delete(file):
     if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
@@ -22,7 +32,7 @@ def delete(file):
 def overwrite(file,content):
     if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
         with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',"w",encoding="utf-8") as f:
-            f.write(content)
+            f.write(f"{content}\n")
         print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())
         print('Complete')
     else:
@@ -31,7 +41,7 @@ def overwrite(file,content):
 def write(file,content):
     if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
         with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','a',encoding='utf-8') as f:
-            f.write(content)
+            f.write(f"{content}\n")
         print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())    
     else:
         print('File does not exist')

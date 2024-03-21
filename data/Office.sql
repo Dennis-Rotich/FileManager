@@ -13,4 +13,5 @@
 --     username VARCHAR(8)
 -- );
 
+-- DROP TABLE employees;
 -- DROP TABLE managers;
