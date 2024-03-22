@@ -4,8 +4,9 @@ from classes.employees import Employee
 
 def employee(name,email,manager_id):
     if "@gmail.com" in email:
+        manager_id = int(manager_id)
         if isinstance(manager_id,int):
-            employee = Employee(name,email,int(manager_id))
+            employee = Employee(name,email,manager_id)
             employee.save()
             print(f"{name} has been added")
         else:
@@ -56,7 +57,7 @@ def read(file):
         print('File does not exist')
 
 def create(file):
-    if os.path.exists():
+    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
         print('File already exists')
     else:
         with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','x',encoding='utf-8') as f:
@@ -91,6 +92,11 @@ def employee_portal(name,employee_options):
 
 logged in as {name}
     """)
+    files_dir = '/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/'
+    files = os.listdir(files_dir)
+    print('FILES PRESENT')
+    for file in files:
+        print(file)
     print(employee_options)
     option = input('Option >> ')
     if option == '1':
@@ -114,6 +120,11 @@ def manager_portal(name,manager_options):
 
 logged in as {name}
     """)
+    files_dir = '/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/'
+    files = os.listdir(files_dir)
+    print('FILES PRESENT')
+    for file in files:
+        print(file)    
     print(manager_options)
     option = input('Option >> ')
     if option == '1':

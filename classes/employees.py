@@ -41,7 +41,9 @@ class Employee:
     def manager_id(self,value):
         from classes.managers import Manager
         if isinstance(value,int) and Manager.find_by_id(value):
-            self._manager_id = value 
+            self._manager_id = value
+        else:
+            self._manager_id = None     
 
     def save(self):
         sql="""
