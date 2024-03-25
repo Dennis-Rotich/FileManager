@@ -2,6 +2,7 @@ import os
 from classes.managers import Manager
 from classes.employees import Employee
 
+# Creating an employee instance and saving them to the database
 def employee(name,email,manager_id):
     if "@gmail.com" in email:
         manager_id = int(manager_id)
@@ -14,7 +15,7 @@ def employee(name,email,manager_id):
     else:
         print("Email entered is not valid")
 
-
+#Creating a manager instance and saving them to the database
 def manager(name,email):
     if "@gmail.com" in email:
         manager = Manager(name,email)
@@ -23,6 +24,7 @@ def manager(name,email):
     else:
         print('Email entered is not valid')    
 
+# The functions which enable a user to act on a file
 def delete(file):
     if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
         os.remove(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt')
@@ -64,6 +66,7 @@ def create(file):
                 pass
         print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())        
 
+#Assign which takes in the user input and creates an instance depending on the user's choice
 def assign():
     options = """
 1. Add employee to the company
@@ -87,6 +90,7 @@ def assign():
         print('Invalid Option')
     assign()
 
+#The menu shown when an employee logs in
 def employee_portal(name,employee_options):
     print(f"""
 
@@ -115,6 +119,7 @@ logged in as {name}
         print('Invalid option')
     employee_portal(name,employee_options)
 
+#The menu shown when a manager logs in
 def manager_portal(name,manager_options):
     print(f"""
 
@@ -156,6 +161,7 @@ logged in as {name}
             print('Invalid option')
     manager_portal(name,manager_options)
 
+#The menu shown when the files section is accessed
 def files():
     employee_options = """
 1. Create a file    
@@ -176,6 +182,7 @@ def files():
     email = input('Enter your email: ')
     role = input('Enter your role: ')
 
+    #Checks if the user is an employee or manager
     if role.capitalize() == 'Employee':
         employee = Employee.find_by_email(email)
         access = employee.username if employee else None
@@ -193,6 +200,7 @@ def files():
     elif access == 'admin':
         manager_portal(name,manager_options)   
 
+#The main menu shown when a user starts the program
 def home():
     options = """
 1. Assign employees and managers
