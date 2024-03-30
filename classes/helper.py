@@ -26,45 +26,45 @@ def manager(name,email):
 
 # The functions which enable a user to act on a file
 def delete(file):
-    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
-        os.remove(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt')
+    if os.path.exists(f'./classes/files/{file}.txt'):
+        os.remove(f'./classes/files/{file}.txt')
         print(f"{file} has been deleted.")
     else:
         print('File does not exist')
 
 def overwrite(file,content):
-    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
-        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',"w",encoding="utf-8") as f:
+    if os.path.exists(f'./classes/files/{file}.txt'):
+        with open(f'./classes/files/{file}.txt',"w",encoding="utf-8") as f:
             f.write(f"{content}\n")
-        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())
+        print(open(f'./classes/files/{file}.txt', encoding='utf-8').read())
         print('Complete')
     else:
         print('File does not exist')
 
 def write(file,content):
-    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
-        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','a',encoding='utf-8') as f:
+    if os.path.exists(f'./classes/files/{file}.txt'):
+        with open(f'./classes/files/{file}.txt','a',encoding='utf-8') as f:
             f.write(f"{content}\n")
-        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())    
+        print(open(f'./classes/files/{file}.txt', encoding='utf-8').read())    
     else:
         print('File does not exist')
     pass
 
 def read(file):
-    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
-        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt',encoding='utf-8') as f:
+    if os.path.exists(f'./classes/files/{file}.txt'):
+        with open(f'./classes/files/{file}.txt',encoding='utf-8') as f:
             for line in f:
                 print(line)
     else:
         print('File does not exist')
 
 def create(file):
-    if os.path.exists(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt'):
+    if os.path.exists(f'./classes/files/{file}.txt'):
         print('File already exists')
     else:
-        with open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt','x',encoding='utf-8') as f:
+        with open(f'./classes/files/{file}.txt','x',encoding='utf-8') as f:
                 pass
-        print(open(f'/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/{file}.txt', encoding='utf-8').read())        
+        print(open(f'./classes/files/{file}.txt', encoding='utf-8').read())        
 
 #Assign which takes in the user input and creates an instance depending on the user's choice
 def assign():
@@ -96,11 +96,15 @@ def employee_portal(name,employee_options):
 
 logged in as {name}
     """)
-    files_dir = '/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/'
-    files = os.listdir(files_dir)
-    print('FILES PRESENT')
-    for file in files:
-        print(file)
+    files_dir = './classes/files'
+    if os.path.exists(files_dir):
+        files = os.listdir(files_dir)
+        print('FILES PRESENT')
+        for file in files:
+            print(file)
+    else:
+        print('Oops seems something went wrong')
+        exit()         
     print(employee_options)
     option = input('Option >> ')
     if option == '1':
@@ -125,11 +129,15 @@ def manager_portal(name,manager_options):
 
 logged in as {name}
     """)
-    files_dir = '/home/dennisrotich/Development/code/Mod3/Week4/FileManager/classes/files/'
-    files = os.listdir(files_dir)
-    print('FILES PRESENT')
-    for file in files:
-        print(file)    
+    files_dir = './classes/files'
+    if os.path.exists(files_dir):
+        files = os.listdir(files_dir)
+        print('FILES PRESENT')
+        for file in files:
+            print(file)
+    else:
+        print('Oops seems something went wrong')
+        exit()  
     print(manager_options)
     option = input('Option >> ')
     if option == '1':
